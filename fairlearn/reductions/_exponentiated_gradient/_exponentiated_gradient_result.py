@@ -14,6 +14,7 @@ class ExponentiatedGradientResult:
         self._best_t = best_t
         self._n_oracle_calls = lagrangian.n_oracle_calls
         self._oracle_calls_execution_time = lagrangian.oracle_calls_execution_time
+        self._hs = lagrangian.hs
 
     @property
     def best_classifier(self):
@@ -69,6 +70,12 @@ class ExponentiatedGradientResult:
         """
         return self._oracle_calls_execution_time
 
+    @property
+    def hs(self):
+        """Lagrangian hs
+        """
+        return self._hs
+
     def _as_dict(self):
         return {
             "best_classifier": self._best_classifier,
@@ -78,5 +85,6 @@ class ExponentiatedGradientResult:
             "last_t": self._last_t,
             "best_t": self._best_t,
             "n_oracle_calls": self._n_oracle_calls,
-            "oracle_calls_execution_time": self._oracle_calls_execution_time
+            "oracle_calls_execution_time": self._oracle_calls_execution_time,
+            "hs": self._hs
         }
